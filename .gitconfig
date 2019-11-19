@@ -1,6 +1,5 @@
 [user]
 	name = John Barstow
-	email = John.Barstow@valocity.co.nz
 [alias]
 	st = status
 	unstage = reset HEAD --
