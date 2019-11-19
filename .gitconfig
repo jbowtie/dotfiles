@@ -1,0 +1,12 @@
+[user]
+	name = John Barstow
+	email = John.Barstow@valocity.co.nz
+[alias]
+	st = status
+	unstage = reset HEAD --
+	new = checkout -b
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --date=short
+	ls = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	hide = update-index --assume-unchanged
+	unhide = update-index --no-assume-unchanged
+	cleanup = "!f() { git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d; }; f"
