@@ -8,4 +8,11 @@
 	ls = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	hide = update-index --assume-unchanged
 	unhide = update-index --no-assume-unchanged
-	cleanup = "!f() { git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d; }; f"
+	cleanup = ! git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D
+	dlc = diff --cached HEAD^
+[push]
+    autoSetupRemote = true
+[mergetool]
+	keepBackup = false
+[init]
+	defaultBranch = main
